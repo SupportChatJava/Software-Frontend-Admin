@@ -28,7 +28,7 @@ const Register = () => {
                     withCredentials: false
                 }
             );
-            window.location = "/"
+            window.location = "/login"
         }catch(error){
             if(!error.response){
                 setError("Database could not be reached");
@@ -51,14 +51,14 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+                    <input type="email" className="form-control" value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} id="emailInput" aria-describedby="emailHelp" placeholder="Enter email"></input>
                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" value={password} ref={passwordRef} onChange={(e) => setPassword(e.target.value)} id="exampleInputPassword1" placeholder="Password"></input>
+                    <input type="password" className="form-control" value={password} ref={passwordRef} onChange={(e) => setPassword(e.target.value)} id="passwordInput" placeholder="Password"></input>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" id="submit" className="btn btn-primary">Submit</button>
                 </form>
         </div>
        </>

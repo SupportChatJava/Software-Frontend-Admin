@@ -55,13 +55,13 @@ function App() {
               <form onSubmit={handleSubmit}>
                   <div className="form-group">
                       <label htmlFor="exampleInputEmail1">Email address</label>
-                      <input type="email" className="form-control" value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+                      <input type="email" className="form-control" value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} id="emailInput" aria-describedby="emailHelp" placeholder="Enter email"></input>
                   </div>
                   <div className="form-group">
                       <label htmlFor="exampleInputPassword1">Password</label>
-                      <input type="password" className="form-control" value={password} ref={passwordRef} onChange={(e) => setPassword(e.target.value)} id="exampleInputPassword1" placeholder="Password"></input>
+                      <input type="password" className="form-control" value={password} ref={passwordRef} onChange={(e) => setPassword(e.target.value)} id="passwordInput" placeholder="Password"></input>
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="submit" id="submit" className="btn btn-primary">Submit</button>
               </form>
           </div>
       </>
