@@ -6,7 +6,7 @@ const Users = () => {
     const errorRef = useRef();
     const [error, setError] = useState('');
     const [users, setUsers] = useState('');
-    const USERS_URL = "/api/user"
+    const USERS_URL = "/api/users"
 
     useEffect( () => {
         getUser();
