@@ -9,10 +9,10 @@ const Users = () => {
     const USERS_URL = "/api/users"
 
     useEffect( () => {
-        getUser();
+        getUsers();
     }, [])
 
-    async function getUser(){
+    async function getUsers(){
         try{
             const response = await axios.get(USERS_URL);
             setUsers(response.data);
