@@ -15,24 +15,6 @@ const Product = () => {
         getProduct();
     }, [])
 
-    const buyProduct = async (e) =>{
-        e.preventDefault();
-        try{
-            console.log(PRODUCT_URL + ProductID)
-            const response = await axios.post((PRODUCT_URL + ProductID), JSON.stringify({TEMP_USERID}),
-                {
-                    headers: { 'Content-Type': 'application/json'},
-                    withCredentials: false
-                }
-            );
-            window.location = "/product/" + ProductID;
-        }catch(error){
-            if(!error.response){
-                setError("Database could not be reached");
-                console.log("fail");
-            }
-        }
-    }
 
     async function getProduct(){
         try{
@@ -52,9 +34,6 @@ const Product = () => {
             <p>Name: {product.name}</p>
             <p>Description: {product.description}</p>
             <p>Price: ${product.price}</p>
-            <form onSubmit={buyProduct}>
-                <button type="submit" id="submit" className="btn btn-primary">Buy</button>
-            </form>
         </div>
     );
 }
