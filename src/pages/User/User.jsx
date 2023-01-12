@@ -8,15 +8,19 @@ const Users = () => {
     const [error, setError] = useState('');
     const [user, setUser] = useState('');
     const userId = useParams().id;
-    const USERS_URL = "/api/user/"
+    const USER_URL = "/api/user/"
 
     useEffect( () => {
         getUser();
     }, [])
 
+    const updateUser = async (e) =>{
+        window.location = "/"
+    }
+
     async function getUser(){
         try{
-            const response = await axios.get(USERS_URL + userId);
+            const response = await axios.get(USER_URL + userId);
             setUser(response.data);
             console.log("Get user succes")
         }catch(error){
@@ -31,6 +35,8 @@ const Users = () => {
             <h1>User</h1>
             <p>Email: {user.email}</p>
             <p>Password: {user.password}</p>
+            <a href={"edit/"+user.id}>Edit</a>
+
         </div>
     );
 }

@@ -8,6 +8,9 @@ import Layout from "./pages/Layout";
 import NavBar from "./pages/Navbar";
 import Users from "./pages/User/Users";
 import User from "./pages/User/User";
+import UserEdit from "./pages/User/Edit";
+import Products from "./pages/Product/Products";
+import Product from "./pages/Product/Product";
 
 const ROLES = {
   User: 2001,
@@ -26,8 +29,10 @@ function App() {
             <Route path="Register" element={<Register />} />
             <Route path="Login" element={<Login />} />
             <Route path="Users" element={<Users />} />
-            <Route path="User/:id" element={<User />} />
-
+              <Route path="User/:id" element={<User />} />
+              <Route path="User/Edit/:id" element={<UserEdit />} />
+            <Route path="Products" element={<Products />} />
+            <Route path="Product/:id" element={<Product />} />
           </Route>
         </Routes>
       </>

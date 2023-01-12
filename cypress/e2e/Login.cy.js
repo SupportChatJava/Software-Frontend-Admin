@@ -20,7 +20,4 @@ describe('Login', () => {
     cy.url()
         .should('include', 'http://localhost:3000/users')
   })
-
-
-
 })

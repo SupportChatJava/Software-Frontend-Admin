@@ -1,34 +1,54 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
-import axios from "../api/axios";
- 
+import axios from "../../api/axios";
+import {useParams} from "react-router-dom";
+
 const Register = () => {
     //Make form push to backend
     const usernameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const errorRef = useRef();
+    const userId = useParams().id;
 
-    const USER_URL = "/api/user"
+    const USER_URL = "/api/user/"
+    const USERS_URL = "/api/users"
 
-    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [user, setUser] = useState('');
+
 
     useEffect(() => {
         emailRef.current.focus();
+        getUser();
     }, [])
 
+    async function getUser(){
+        try{
+            const response = await axios.get(USER_URL + userId);
+            setUser(response.data);
+            setEmail(user.email)
+            setPassword(user.password)
+            console.log("Get user success")
+        }catch(error){
+            console.log("Get user failed")
+        }
+
+    }
+
     const handleSubmit = async (e) =>{
+        console.log(JSON.stringify({email, password}));
         e.preventDefault();
         try{
-            const response = await axios.post(USER_URL, JSON.stringify({email, password}),
+            const response = await axios.put((USER_URL + userId), JSON.stringify({email, password}),
                 {
                     headers: { 'Content-Type': 'application/json'},
                     withCredentials: false
                 }
             );
-            window.location = "/login"
+
+            window.location = "/user/" + userId;
         }catch(error){
             if(!error.response){
                 setError("Database could not be reached");
@@ -47,18 +67,17 @@ const Register = () => {
         <>
         <div>
             <p ref={errorRef}> {error}</p>
-            <h1>Register</h1>
+            <h1>User</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} id="emailInput" aria-describedby="emailHelp" placeholder="Enter email"></input>
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <input type="email" className="form-control" value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" value={password} ref={passwordRef} onChange={(e) => setPassword(e.target.value)} id="passwordInput" placeholder="Password"></input>
+                    <input type="text" className="form-control" value={password} ref={passwordRef} onChange={(e) => setPassword(e.target.value)} id="exampleInputPassword1" placeholder="Password"></input>
                 </div>
-                <button type="submit" id="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
         </div>
        </>

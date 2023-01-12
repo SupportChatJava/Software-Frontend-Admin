@@ -1,0 +1,14 @@
+#Get NODE for project
+FROM node:16.17-alpine3.15
+
+#Copy package and package-lock
+COPY package.json ./
+
+
+#NPM isntall
+RUN npm install
+
+COPY . ./
+
+#NPM build
+RUN npm run build
