@@ -8,7 +8,7 @@ const Register = () => {
     const passwordRef = useRef();
     const errorRef = useRef();
 
-    const REGISTER_URL = "/api/register"
+    const USER_URL = "/api/user"
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ const Register = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            const response = await axios.post(REGISTER_URL, JSON.stringify({email, password}), 
+            const response = await axios.post(USER_URL, JSON.stringify({email, password}),
                 {
                     headers: { 'Content-Type': 'application/json'},
                     withCredentials: false
