@@ -38,7 +38,7 @@ const Products = () => {
                     <div>
                         <h2>{cart.id}</h2>
                         {Array.isArray(cart.product) ? cart.product.map(product =>
-                            <p>Product: {product.name} | Price: {product.price} | Description: {product.description}</p>
+                            <p id={"BoughtProductName"+product.name}>Product: {product.name} | Price: {product.price} | Description: {product.description}</p>
 
                         ) : null}
                     </div>

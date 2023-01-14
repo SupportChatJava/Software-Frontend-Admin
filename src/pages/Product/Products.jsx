@@ -40,6 +40,7 @@ const Products = () => {
                     withCredentials: false
                 }
             );
+            window.location="/cart/user/1";
         }catch(error){
             if(!error.response){
                 setError("Database could not be reached");
@@ -61,12 +62,12 @@ const Products = () => {
                 { Array.isArray(products) ? products.map(product =>
                     <div key={product.id}>
                         <a className="float-md-start" href={"product/"+product.id}>{product.id} - {product.name}</a>
-                        <button onClick={addProductToCart.bind(this, product)} className="btn btn-primary">Select</button>
+                        <button id={"product" + product.id} onClick={addProductToCart.bind(this, product)} className="btn btn-primary">Select</button>
                     </div>
 
                 ) : null}
             </div>
-            <button onClick={buyProducts} className="btn btn-primary">Buy</button>
+            <button id="BuyButton" onClick={buyProducts} className="btn btn-primary">Buy</button>
 
             {/*<div>*/}
             {/*    <h1>Cart</h1>*/}

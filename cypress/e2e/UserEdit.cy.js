@@ -1,4 +1,4 @@
-describe('Login', () => {
+describe('Edit', () => {
   it('Edit user', () => {
     cy.visit('http://localhost:3000/user/3')
 
