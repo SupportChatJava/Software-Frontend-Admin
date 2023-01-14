@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
     return (
-        <nav className="navbar navbar-light bg-success">
+        <nav className="navbar navbar-light bg-warning">
             <span className="navbar-brand mb-0 h1">Admin Panel</span>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>

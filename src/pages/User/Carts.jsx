@@ -37,11 +37,25 @@ const Products = () => {
                 { Array.isArray(carts) ? carts.map(cart =>
                     <div>
                         <h2>{cart.id}</h2>
-                        {Array.isArray(cart.product) ? cart.product.map(product =>
-                            <p id={"BoughtProductName"+product.name}>Product: {product.name} | Price: {product.price} | Description: {product.description}</p>
+                        <table className="table">
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>price</th>
+                                <th>Description</th>
+                            </tr>
+                                {Array.isArray(cart.product) ? cart.product.map(product =>
+                                    <tr>
+                                        <td id={"BoughtProductName"+product.name}>{product.id}</td>
+                                        <td>{product.name}</td>
+                                        <td>{product.price}</td>
+                                        <td>{product.description}</td>
+                                    </tr>
 
-                        ) : null}
+                                ) : null}
+                        </table>
                     </div>
+
 
 
                 ) : null}
