@@ -11,6 +11,7 @@ import User from "./pages/User/User";
 import UserEdit from "./pages/User/Edit";
 import Products from "./pages/Product/Products";
 import Product from "./pages/Product/Product";
+import UserCarts from "./pages/User/Carts";
 
 const ROLES = {
   User: 2001,
@@ -31,8 +32,10 @@ function App() {
             <Route path="Users" element={<Users />} />
               <Route path="User/:id" element={<User />} />
               <Route path="User/Edit/:id" element={<UserEdit />} />
-            <Route path="Products" element={<Products />} />
-            <Route path="Product/:id" element={<Product />} />
+              <Route path="cart/user/:id" element={<UserCarts />} />
+              <Route path="Products" element={<Products />} />
+              <Route path="Product/:id" element={<Product />} />
+
           </Route>
         </Routes>
       </>

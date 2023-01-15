@@ -33,9 +33,10 @@ const Users = () => {
     return (
         <div>
             <h1>User</h1>
-            <p>Email: {user.email}</p>
-            <p>Password: {user.password}</p>
-            <a href={"edit/"+user.id}>Edit</a>
+            <p id="email">Email: {user.email}</p>
+            <p id="password">Password: {user.password}</p>
+            <a className="btn btn-warning" href={"edit/"+user.id}>Edit</a>
+            <a className="btn btn-primary" href={"../cart/user/"+user.id}>cart</a>
 
         </div>
     );

@@ -40,6 +40,7 @@ const Products = () => {
                     withCredentials: false
                 }
             );
+            window.location="/cart/user/1";
         }catch(error){
             if(!error.response){
                 setError("Database could not be reached");
@@ -58,15 +59,26 @@ const Products = () => {
         <div className="row">
             <div>
                 <h1>Products</h1>
+                <table className="table table">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col"></th>
+                    </tr>
                 { Array.isArray(products) ? products.map(product =>
-                    <div key={product.id}>
-                        <a className="float-md-start" href={"product/"+product.id}>{product.id} - {product.name}</a>
-                        <button onClick={addProductToCart.bind(this, product)} className="btn btn-primary">Select</button>
-                    </div>
+
+                        <tr>
+                            <td scope="row">{product.id}</td>
+                            <td><a href={"product/"+product.id}>{product.name}</a></td>
+                            <td><a id={"product" + product.id} onClick={addProductToCart.bind(this, product)} className="btn btn-secondary">Select</a></td>
+
+                        </tr>
 
                 ) : null}
+                </table>
+
             </div>
-            <button onClick={buyProducts} className="btn btn-primary">Buy</button>
+            <button id="BuyButton" onClick={buyProducts} className="btn btn-primary">Buy</button>
 
             {/*<div>*/}
             {/*    <h1>Cart</h1>*/}
